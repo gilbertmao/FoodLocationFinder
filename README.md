@@ -1,7 +1,8 @@
 # 🍽️ Food Location Finder
 
 **A Spring Boot web application for finding food locations based on a given location, built by Team ChefsHouse.**
-
+[Team Jira Board](https://gatech-cs-3300-team.atlassian.net/jira/software/projects/DO/boards/1)
+[Team Google Drive Folder](https://drive.google.com/drive/folders/1ox0vkPHtiTBqb879qKNTD0goqUHFb6Hs)
 ---
 
 ## 📋 Project Overview
