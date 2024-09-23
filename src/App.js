@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
-import logo from './logo.svg';
 import './App.css';
 
 /* not 100% sure if this is set up correctly, but i was able to test and see it load on my local machine */
 
-function App() {
+const App = () => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
+  
 
   const onLogInButtonClick = () => {
     /* implement this */
