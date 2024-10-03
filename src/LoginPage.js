@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
 import './App.css';
+import CreateAccountPage from './CreateAccountPage';
 
 /* not 100% sure if this is set up correctly, but i was able to test and see it load on my local machine */
 
-const App = () => {
+const LoginPage = () => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   
@@ -12,7 +13,9 @@ const App = () => {
     /* implement this */
   }
   const onAccountCreateButtonClick = () => {
-    /* implement this */
+    return <div>
+                <div className= "App-title">CreateAccountPage</div>
+            </div>;
   }
   return ( /* for now, just returns our simple login page */
     <div className = "App"> 
@@ -54,4 +57,4 @@ const App = () => {
   );
 }
 
-export default App;
+export default LoginPage;
