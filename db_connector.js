@@ -1,5 +1,8 @@
 //npm install mysql
-//Uses Public IP
+
+// This file connects to the remote Google Cloud Platform
+// It is currently not running security features in the intrest of being fully operational for integration on Saturday
+// At the moment, the database is allowing accesses from all networks to prevent problems with authentication delaying progress on other code aspects
 
 console.log('Beginning');
 
