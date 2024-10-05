@@ -1,4 +1,4 @@
-function CreateAccountPage() {
+function CreateAccountPage({loginHandle}) {
     return (
         <div className = "App"> 
         <div>
@@ -32,7 +32,8 @@ function CreateAccountPage() {
             <input
                 type="button"
                 value={'Log in'}
-                //onClick={onLogInButtonClick}
+                onClick={() => loginHandle("login")}
+
             />
         </div>
     </div>
