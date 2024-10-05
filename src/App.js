@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import MainPage from './Components/MainPage';
 import LoginPage from './Components/LoginPage';
 import CreateAccountPage from './Components/CreateAccountPage';
 import './App.css';
@@ -20,7 +21,8 @@ const App = () => {
   return ( <>
     {Login == "login" ? 
     (<LoginPage loginHandle={setlogin}/>) : 
-    (<CreateAccountPage/>)}
+     (Login == "Logged in") ? (<MainPage/>) : 
+      (<CreateAccountPage/>)}
   </>
   );
 }
