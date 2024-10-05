@@ -22,7 +22,7 @@ function LoginPage({loginHandle}){
                 <input
                     type="button"
                     value={'Log in'}
-                    //onClick={onLogInButtonClick}
+                    onClick={() => loginHandle("Logged in")}
                 />
             </div>
             <div>
