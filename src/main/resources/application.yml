@@ -3,7 +3,6 @@ server:
 spring:
   application:
     name: FoodLocationFinder
-
 google:
   maps:
     api:
