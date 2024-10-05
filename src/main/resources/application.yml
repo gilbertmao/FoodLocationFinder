@@ -3,4 +3,7 @@ server:
 spring:
   application:
     name: FoodLocationFinder
-    
+google:
+  maps:
+    api:
+      key: "AIzaSyBURc-6ZYBh4ZeeqihOXQ2f8rcJ-okuEJ4"
