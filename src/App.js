@@ -19,10 +19,12 @@ const App = () => {
   return (
     <>
       {Login === 'login' ? (
-        <LoginPage loginHandle={setlogin} />
+        // Pass `users` as a prop to LoginPage
+        <LoginPage loginHandle={setlogin} users={users} />
       ) : Login === 'Logged in' ? (
         <MainPage />
       ) : (
+        // Pass `users` and `setUsers` to CreateAccountPage
         <CreateAccountPage loginHandle={setlogin} users={users} setUsers={setUsers} />
       )}
     </>
