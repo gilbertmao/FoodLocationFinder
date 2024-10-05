@@ -10,19 +10,29 @@ const App = () => {
   //const [username, setUsername] = useState('')
   //const [password, setPassword] = useState('')
   const [Login, setlogin] = useState('login');
+  const [Radius, setRadius] = useState(50);
+  const [Latitude, setLatitude] = useState(33.7501);
+  const [Longitude, setLongitude] = useState(-84.3885);
+
+
+  const radiusHandler = (event) => {
+    const newValue = Number(event.target.value); // Convert value to number
+    setRadius(newValue);
+  };
   
 
   const onLogInButtonClick = () => {
     /* implement this */
-  }
+  }   
   const onAccountCreateButtonClick = () => {
     
   }
   return ( <>
     {Login == "login" ? 
     (<LoginPage loginHandle={setlogin}/>) : 
-     (Login == "Logged in") ? (<MainPage/>) : 
-      (<CreateAccountPage/>)}
+    (Login == "Logged in") ? 
+    (<MainPage radius={Radius} radiusHandler={radiusHandler} latitude={Latitude} latitudeHandler={setLatitude} longitudeHandler={setLongitude}/>) : 
+    (<CreateAccountPage/>)}
   </>
   );
 }
