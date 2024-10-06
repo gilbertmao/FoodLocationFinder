@@ -18,7 +18,6 @@ function MainPage() {
         museums: false,
         parks: false,
       });
-    var markers = [];
     
     const handleCheckboxChange = (event) => {
         const { name, checked } = event.target;
@@ -122,21 +121,18 @@ function MainPage() {
                 } else {
                     console.warn('map.clearOverlays is not a function. Markers may not be cleared properly.');
                 }
-
-                markers.forEach((marker) => marker.setMap(null));
     
                 for (let place of places) {
                     if (place.lat && place.lng) {
-                        markers.push(new AdvancedMarkerElement({
+                        new AdvancedMarkerElement({
                             map,
                             position: {lat: Number(place.lat), lng: Number(place.lng)},
                             title: place.displayName,
-                        }));
+                        });
     
                         bounds.extend({lat: Number(place.lat), lng: Number(place.lng)});
                     }
                 }
-                console.log(markers);
     
                 map.fitBounds(bounds);
             } else {
