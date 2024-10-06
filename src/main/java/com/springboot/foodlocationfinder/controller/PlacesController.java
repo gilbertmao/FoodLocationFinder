@@ -22,7 +22,6 @@ public class PlacesController {
     @Autowired
     private PlacesService placesService;
     @Autowired
-    private DistanceService distanceService;
     
     @GetMapping("/apikey")
     public String getAPIKey() {
@@ -39,35 +38,6 @@ public class PlacesController {
         ) {
         JsonNode result = placesService.search(lat, lng, radius, types);
         return result;
-    }
-    @GetMapping("/formatted")
-    public List<Map<String, Object>> getNameAndLocation(String location, int radius, String[] types) {
-        String places = getPlaces(location, radius, types);
-        List<Map<String,Object>> out = new ArrayList<>();
-        JSONObject response = new JSONObject(places);
-        JSONArray results = response.getJSONArray("results");
-        System.out.println(location);
-        double currLat = Double.parseDouble(location.split(",")[0]);
-        double currLng = Double.parseDouble(location.split(",")[1]);
-    
-        for (int i = 0; i < results.length(); i++) {
-            JSONObject place = results.getJSONObject(i);
-            System.out.println(place);
-            Map<String, Object> tempMap = new HashMap<>();
-            tempMap.put("Name", place.getString("name"));
-            tempMap.put("Vicinity", place.getString("vicinity"));
-            tempMap.put("Operational", place.getString("business_status"));
-            tempMap.put("Rating", place.getDouble("rating"));
-            Map<String, Double> tempLoc = new HashMap<>();
-            double lat = place.getJSONObject("geometry").getJSONObject("location").getDouble("lat");
-            double lng = place.getJSONObject("geometry").getJSONObject("location").getDouble("lng");
-            tempLoc.put("Lat", lat);
-            tempLoc.put("Long", lng);
-            tempMap.put("Location", tempLoc);
-            tempMap.put("Distance",distanceService.calculateDistance(currLat, currLng, lat, lng));
-            out.add(tempMap);
-        }
-        return out;
     }
 
 }
