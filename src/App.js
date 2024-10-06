@@ -11,12 +11,6 @@ const App = () => {
   const [Longitude, setLongitude] = useState(-84.3885);
   const [users, setUsers] = useState(new Map()); // State for storing usernames and passwords
 
-
-  const radiusHandler = (event) => {
-    const newValue = Number(event.target.value); // Convert value to number
-    setRadius(newValue);
-  };
-
   const onLogInButtonClick = () => {
     // Implement this if necessary
   };
@@ -31,7 +25,7 @@ const App = () => {
         // Pass `users` as a prop to LoginPage
         <LoginPage loginHandle={setlogin} users={users} />
       ) : Login === 'Logged in' ? (
-        <MainPage radius={Radius} radiusHandler={radiusHandler} latitude={Latitude} latitudeHandler={setLatitude} longitudeHandler={setLongitude}/>
+        <MainPage/>
       ) : (
         // Pass `users` and `setUsers` to CreateAccountPage
         <CreateAccountPage loginHandle={setlogin} users={users} setUsers={setUsers} />

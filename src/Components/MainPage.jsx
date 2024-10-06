@@ -12,12 +12,47 @@ function MainPage() {
     const [radius, setRadius] = useState(1); // Default 1 km
     const [sortColumn, setSortColumn] = useState('rating');
     const [sortOrder, setSortOrder] = useState('desc');
+    const [numResults, setNumResults] = useState(20);
+    const [checkedItems, setCheckedItems] = useState({
+        restaurants: true,
+        museums: false,
+        parks: false,
+      });
     const [markers, setMarkers] = useState([]);
+    
+    const handleCheckboxChange = (event) => {
+        const { name, checked } = event.target;
+        setCheckedItems((prevState) => ({
+            ...prevState,
+            [name]: checked,
+        }));
+    };
+
+    const generateTypes = () => {
+        const types = [];
+        if (checkedItems.restaurants) types.push("restaurant");
+        if (checkedItems.museums) types.push("museum");
+        if (checkedItems.parks) types.push("park");
+        return types;
+    };
+
+    function getRandomPlaces(places) {
+        var placesNew = [];
+        var i = 0;
+        while (i < numResults) {
+            var rand = Math.floor(Math.random() * places.length);
+            if (placesNew.includes(places[rand])) {
+                continue;
+            }
+            placesNew.push(places[rand]);
+            i++;
+        }
+        return placesNew;
+    }
 
     useEffect(() => {
         initMap();
     }, []);
-
     async function initMap() {
         try {
             const { Map } = await window.google.maps.importLibrary("maps");
@@ -43,7 +78,7 @@ function MainPage() {
         params.append('lng', `${request.locationRestriction.lng}`);
         params.append('radius', request.locationRestriction.radius);
         request.types.forEach(type => params.append('types', type));
-        
+                
         return `${baseUrl}?${params.toString()}`;
     }
 
@@ -59,6 +94,8 @@ function MainPage() {
         try {
             const { AdvancedMarkerElement } = await window.google.maps.importLibrary("marker");
             const { LatLngBounds } = await window.google.maps.importLibrary("core");
+
+            const types = generateTypes();
             const bounds = new LatLngBounds();
             
             clearMarkers();
@@ -69,8 +106,8 @@ function MainPage() {
                     lng: lng,
                     radius: radius * 1000, // Convert km to meters
                 },
-                types: ["restaurant"],
-                maxResultCount: 20,
+                types: types,
+                maxResultCount: numResults > 20 ? 20 : numResults,
             };
     
             const url = constructPlacesApiUrl(request);
@@ -83,8 +120,9 @@ function MainPage() {
             console.log('Fetched Places:', fetchedPlaces);
     
             if (Array.isArray(fetchedPlaces) && fetchedPlaces.length > 0) {
-                setPlaces(fetchedPlaces);
+                setPlaces(getRandomPlaces(fetchedPlaces));
     
+
                 const newMarkers = fetchedPlaces.map(place => {
                     if (place.lat && place.lng) {
                         const position = {lat: Number(place.lat), lng: Number(place.lng)};
@@ -161,34 +199,90 @@ function MainPage() {
 
     return (
         <div>
-            <h1>Nearby Restaurants</h1>
-            <div>
-                <input 
-                    type="text" 
-                    value={lat} 
-                    onChange={(e) => setLat(e.target.value)} 
-                    placeholder="Latitude"
-                />
-                <input 
-                    type="text" 
-                    value={lng} 
-                    onChange={(e) => setLng(e.target.value)} 
-                    placeholder="Longitude"
-                />
-                <input 
-                    type="range" 
-                    min="1" 
-                    max="50" 
-                    value={radius} 
-                    onChange={(e) => setRadius(Number(e.target.value))} 
-                />
-                <span>{radius} km</span>
-                <button onClick={handleSearch} disabled={loading}>
-                    {loading ? 'Searching...' : 'Search'}
+            <h1 className='App'>Search for nearby points of interest</h1>
+            <div className="container">
+                <div className="input-group">
+                    <label htmlFor="input1">Latitude</label>
+                    <input
+                        id="input1"
+                        title="Latitude"
+                        placeholder="Enter a Latitude"
+                        value={lat}
+                        onChange={(ev) => setLat(ev.target.value)}
+                    />
+                </div>
+                <div className="input-group">
+                    <label htmlFor="input2">Longitude</label>
+                    <input
+                        id="input2"
+                        title="Longitude"
+                        placeholder="Enter a Longitude"
+                        value={lng}
+                        onChange={(ev) => setLng(ev.target.value)}
+                    />
+                </div>
+                <div className="input-group">
+                    <label htmlFor="input3">Number of results (Max: 20)</label>
+                    <input
+                        id="input3"
+                        title="Number of results"
+                        placeholder="Enter number of results"
+                        value={numResults}
+                        onChange={(ev) => setNumResults(ev.target.value)}
+                    />
+                </div>
+                <div className="input-group">
+                    <label htmlFor="input4">Radius: {radius} km</label>
+                    <input
+                        type="range"
+                        id="input4"
+                        min="0"
+                        max="100"
+                        value={radius}
+                        onChange={(ev) => setRadius(Number(ev.target.value))}
+                        style={{ width: '100%' }}
+                    />
+                </div>
+                <div className="input-group">
+                    <label style={{textAlign: 'center'}}>Include within search:</label>
+                    <div style={{ textAlign: 'center', display: 'flex', gap: '20px' }}>
+                        <label>
+                            Restaurants
+                            <input
+                            type="checkbox"
+                            name="restaurants"
+                            checked={checkedItems.restaurants}
+                            onChange={handleCheckboxChange}
+                            />
+                        </label>
+                        <label>
+                            Museums
+                            <input
+                            type="checkbox"
+                            name="museums"
+                            checked={checkedItems.museums}
+                            onChange={handleCheckboxChange}
+                            />
+                        </label>
+                        <label>
+                            Parks
+                            <input
+                            type="checkbox"
+                            name="parks"
+                            checked={checkedItems.parks}
+                            onChange={handleCheckboxChange}
+                            />
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div className='App'>
+                <button style={{height: '30px', width : '100px'}} onClick={handleSearch} disabled={loading}>
+                        {loading ? 'Searching...' : 'Search'}
                 </button>
             </div>
             {error && <p style={{color: 'red'}}>Error: {error}</p>}
-            <div ref={mapRef} style={{ width: '100%', height: '400px', marginBottom: '20px' }}></div>
+            <div ref={mapRef} style={{ width: '100%', height: '400px', marginBottom: '20px', marginTop: '20px'}}></div>
             {places.length > 0 ? (
                 <table style={{ width: '100%', borderCollapse: 'collapse' }}>
                     <thead>
