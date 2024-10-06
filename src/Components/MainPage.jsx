@@ -12,6 +12,7 @@ function MainPage() {
     const [radius, setRadius] = useState(1); // Default 1 km
     const [sortColumn, setSortColumn] = useState('rating');
     const [sortOrder, setSortOrder] = useState('desc');
+    const [markers, setMarkers] = useState([]);
 
     useEffect(() => {
         initMap();
@@ -46,6 +47,11 @@ function MainPage() {
         return `${baseUrl}?${params.toString()}`;
     }
 
+    function clearMarkers() {
+        markers.forEach(marker => marker.setMap(null));
+        setMarkers([]);
+    }
+
     async function handleSearch() {
         setLoading(true);
         setError(null);
@@ -53,7 +59,10 @@ function MainPage() {
         try {
             const { AdvancedMarkerElement } = await window.google.maps.importLibrary("marker");
             const { LatLngBounds } = await window.google.maps.importLibrary("core");
-    
+            const bounds = new LatLngBounds();
+            
+            clearMarkers();
+
             const request = {
                 locationRestriction: {
                     lat: lat,
@@ -76,27 +85,21 @@ function MainPage() {
             if (Array.isArray(fetchedPlaces) && fetchedPlaces.length > 0) {
                 setPlaces(fetchedPlaces);
     
-                const bounds = new LatLngBounds();
-    
-                // Clear existing markers (if any)
-                if (map && typeof map.clearOverlays === 'function') {
-                    map.clearOverlays();
-                } else {
-                    console.warn('map.clearOverlays is not a function. Markers may not be cleared properly.');
-                }
-    
-                for (let place of fetchedPlaces) {
+                const newMarkers = fetchedPlaces.map(place => {
                     if (place.lat && place.lng) {
-                        new AdvancedMarkerElement({
+                        const position = {lat: Number(place.lat), lng: Number(place.lng)};
+                        const marker = new AdvancedMarkerElement({
                             map,
-                            position: {lat: Number(place.lat), lng: Number(place.lng)},
+                            position: position,
                             title: place.displayName,
                         });
-    
-                        bounds.extend({lat: Number(place.lat), lng: Number(place.lng)});
+                        bounds.extend(position);
+                        return marker;
                     }
-                }
-    
+                    return null;
+                }).filter(Boolean);
+
+                setMarkers(newMarkers);
                 map.fitBounds(bounds);
             } else {
                 setError('No restaurants found in this area.');
