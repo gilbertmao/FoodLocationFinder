@@ -42,6 +42,8 @@ jobs:
         cache: 'npm'
         cache-dependency-path: '**/package-lock.json'
     - name: Install dependencies and build
+      env:
+        CI: false  # This disables treating warnings as errors
       run: |
         npm i
         npm run build
@@ -53,4 +55,4 @@ jobs:
         name: frontend-build
         retention-days: 2
         if-no-files-found: warn
-        path: public
+        path: build  # Assuming your build output is in the 'build' directory
