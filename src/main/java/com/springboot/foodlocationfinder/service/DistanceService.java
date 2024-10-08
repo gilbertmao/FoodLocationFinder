@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class DistanceService {
+    // Constant representing the Earth's radius in meters
     private static final double EARTH_RAD = 6371000.0;
 
 
@@ -33,9 +34,11 @@ public class DistanceService {
 
         double latDiff = lat2Rad - lat1Rad;
         double lngDiff = lng2Rad - lng1Rad;
-        
+
+        // Apply the Haversine formula to calculate the great-circle distance
         double a = Math.sin(latDiff / 2) * Math.sin(latDiff / 2) + Math.cos(lat1Rad) * Math.cos(lat2Rad) * Math.sin(lngDiff / 2) * Math.sin(lngDiff / 2);
         double dist = EARTH_RAD * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+        // Return the distance rounded to the nearest meter
         return Math.round(dist);        
     }
 }
