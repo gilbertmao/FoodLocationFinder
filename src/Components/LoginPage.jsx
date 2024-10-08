@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {db_connector} from './db_connector.js'
+//import {db_connector} from './db_connector.js'
 
 function LoginPage({ loginHandle, users }) {
   const [username, setUsername] = useState('');

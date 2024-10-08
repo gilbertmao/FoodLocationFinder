@@ -43,6 +43,13 @@
     		<artifactId>json</artifactId>
     		<version>20240303</version> <!-- Use the latest version available -->
 		</dependency>
+		<dependencies>
+			<dependency>
+				<groupId>com.mysql</groupId>
+				<artifactId>mysql-connector-j</artifactId>
+				<version>9.0.0</version>
+			</dependency>
+		</dependencies>
 <!--		<dependency>-->
 <!--			<groupId>com.google.cloud</groupId>-->
 <!--			<artifactId>spring-cloud-gcp-starter</artifactId>-->
@@ -59,13 +66,6 @@
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<optional>true</optional>
-		</dependency>
-		<dependency>
-			 <path-to-file>database/mysql-connector-j-9.0.0/mysql-connector-j-9.0.0.jar</path-to-file>
-			 <groupId>com.mysql</groupId>
- 			 <artifactId>mysql-connector-j</artifactId>
- 			 <version>9.0.0</version>
-			 <scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -131,5 +131,10 @@
 			</plugin>
 		</plugins>
 	</build>
-
+<repositories>
+    <repository>
+        <id>my-local-repo</id>
+        <url>file://${basedir}/lib</url>
+    </repository>
+</repositories>
 </project>

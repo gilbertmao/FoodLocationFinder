@@ -6,7 +6,7 @@
 
 
 
-export default class db_connector {
+/*class db_connector {
   constructor() {
     console.log('Beginning');
 
@@ -61,4 +61,4 @@ export default class db_connector {
   }
 }
 
-module.exports = db_connector;
+module.exports = db_connector;*/
