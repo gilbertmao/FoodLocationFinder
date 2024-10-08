@@ -2,6 +2,8 @@ package com.springboot.foodlocationfinder;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.springboot.foodlocationfinder.database.dbConnector;
+
 public class LoginLogic {
 
     private Map<String, String> LoginData;
@@ -20,6 +22,8 @@ public class LoginLogic {
      */
     public boolean createUser(String username, String password) {
         // duplicate username
+        //TESTING
+        //dbConnector db = new dbConnector();
         if (LoginData.containsKey(username)) {
             System.out.println("username already taken");
             return false;
@@ -29,7 +33,7 @@ public class LoginLogic {
                 return false;
             } 
             System.out.println("Account created. Enjoy FoodFinder!");
-            LoginData.put(username, password);
+            LoginData.put(username, "password");
             return true;
         }
 

@@ -61,6 +61,13 @@
 			<optional>true</optional>
 		</dependency>
 		<dependency>
+			 <path-to-file>database/mysql-connector-j-9.0.0/mysql-connector-j-9.0.0.jar</path-to-file>
+			 <groupId>com.mysql</groupId>
+ 			 <artifactId>mysql-connector-j</artifactId>
+ 			 <version>9.0.0</version>
+			 <scope>compile</scope>
+		</dependency>
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-tomcat</artifactId>
 			<scope>provided</scope>

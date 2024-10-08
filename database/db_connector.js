@@ -26,7 +26,6 @@ class db_connector{
       console.log("Posting")
       db.con.query("INSERT INTO users (username, hashed_password) VALUES (\x22" + username + "\x22, \x22" + hashed_password + "\x22);", function (err, result) {
         if (err) throw err;
-        console.log("Result: " + result);
       });
   }
 }
