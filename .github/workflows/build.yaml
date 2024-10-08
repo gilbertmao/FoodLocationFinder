@@ -11,7 +11,7 @@ on:
     types: [opened, synchronize]
 
 jobs:
-  build_jar:
+  build_backend:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
@@ -35,7 +35,7 @@ jobs:
         path: |
           ${{ github.workspace }}/target/*.jar
 
-  build_client:
+  build_frontend:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
