@@ -78,6 +78,7 @@ function MainPage() {
         try {
             const { AdvancedMarkerElement } = await window.google.maps.importLibrary("marker");
             const { LatLngBounds } = await window.google.maps.importLibrary("core");
+            const { InfoWindow } = await window.google.maps.importLibrary("maps");
 
             const bounds = new LatLngBounds();
 
@@ -114,6 +115,18 @@ function MainPage() {
                             title: place.displayName,
                         });
                         bounds.extend(position);
+                        marker.addListener("click", () => {
+                            const contentString = `
+                                <div>
+                                    <h2>${marker.title}</h2>
+                                    <p>${place.address}</p>
+                                </div>
+                            `;
+                            var infoWindow = new InfoWindow();
+                            infoWindow.close();
+                            infoWindow.setContent(contentString);
+                            infoWindow.open(marker.map, marker);
+                        });
                         return marker;
                     }
                     return null;
