@@ -33,7 +33,7 @@ public class LoginLogic {
                 return false;
             } 
             System.out.println("Account created. Enjoy FoodFinder!");
-            LoginData.put(username, "password");
+            LoginData.put(username, password);
             return true;
         }
 
