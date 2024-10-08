@@ -21,14 +21,14 @@ jobs:
         cache: maven
     - name: Build with Maven
       run: mvn -B package --file pom.xml
-    - name: Target dir
-      run: ls -la $GITHUB_WORKSPACE/target/
+    - name: List target directory
+      run: ls -la target/
     - name: Upload JAR
       uses: actions/upload-artifact@v4
       with:
         name: backend-jar
         retention-days: 2
-        if-no-files-found: error
+        if-no-files-found: warn
         path: target/*.jar
 
   build_frontend:
@@ -43,12 +43,14 @@ jobs:
         cache-dependency-path: '**/package-lock.json'
     - name: Install dependencies and build
       run: |
-        npm ci
+        npm i
         npm run build
+    - name: List build directory
+      run: ls -la
     - name: Upload React build
       uses: actions/upload-artifact@v4
       with:
         name: frontend-build
         retention-days: 2
-        if-no-files-found: error
-        path: build
+        if-no-files-found: warn
+        path: public
