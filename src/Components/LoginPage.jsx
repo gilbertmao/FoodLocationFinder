@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
+import {db_connector} from './db_connector.js'
 
 function LoginPage({ loginHandle, users }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  //db = new db_connector();
 
   const handleLogin = () => {
     // Check if the username exists in the map
