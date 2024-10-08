@@ -2,10 +2,29 @@ package com.springboot.foodlocationfinder.service;
 
 import org.springframework.stereotype.Service;
 
+/**
+ * The {@code DistanceService} class provides a service to calculate the distance
+ * between two geographical coordinates using the Haversine formula.
+ *
+ * <p>This service calculates the distance between two points on the Earth's surface
+ * given their latitude and longitude in degrees. The result is the shortest distance
+ * between the points (the great-circle distance) measured in meters.
+ */
 @Service
 public class DistanceService {
     private static final double EARTH_RAD = 6371000.0;
 
+
+    /**
+     * Calculates the distance between two geographical coordinates (latitude and longitude)
+     * using the Haversine formula. The result is rounded to the nearest meter.
+     *
+     * @param lat1 Latitude of the first location in degrees.
+     * @param lng1 Longitude of the first location in degrees.
+     * @param lat2 Latitude of the second location in degrees.
+     * @param lng2 Longitude of the second location in degrees.
+     * @return The distance between the two locations in meters, rounded to the nearest meter.
+     */
     public double calculateDistance(double lat1, double lng1, double lat2, double lng2) {
         double lat1Rad = Math.toRadians(lat1);
         double lng1Rad = Math.toRadians(lng1);
