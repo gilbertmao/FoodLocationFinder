@@ -13,6 +13,10 @@ public class LoginLogic {
     private Map<String, String> LoginData;
 
 
+    /**
+     * Initializes the {@code LoginLogic} class by creating an empty
+     * {@code LoginData} map to store usernames and passwords.
+     */
     public LoginLogic() {
         LoginData = new HashMap<>();
     }
