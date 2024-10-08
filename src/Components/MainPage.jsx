@@ -13,41 +13,23 @@ function MainPage() {
     const [sortColumn, setSortColumn] = useState('rating');
     const [sortOrder, setSortOrder] = useState('desc');
     const [numResults, setNumResults] = useState(20);
-    const [checkedItems, setCheckedItems] = useState({
-        restaurants: true,
-        museums: false,
-        parks: false,
-      });
+    const [selectedValue, setSelectedValue] = useState('restaurant'); 
     const [markers, setMarkers] = useState([]);
     
-    const handleCheckboxChange = (event) => {
-        const { name, checked } = event.target;
-        setCheckedItems((prevState) => ({
-            ...prevState,
-            [name]: checked,
-        }));
+    const handleChange = (event) => {
+        setSelectedValue(event.target.value);
     };
 
-    const generateTypes = () => {
-        const types = [];
-        if (checkedItems.restaurants) types.push("restaurant");
-        if (checkedItems.museums) types.push("museum");
-        if (checkedItems.parks) types.push("park");
-        return types;
-    };
-
-    function getRandomPlaces(places) {
-        var placesNew = [];
-        var i = 0;
-        while (i < numResults) {
-            var rand = Math.floor(Math.random() * places.length);
-            if (placesNew.includes(places[rand])) {
-                continue;
+    function cutPlacesDown(places) {
+        if (places) {
+            var placesNew = [];
+            var i = 0;
+            while (i < numResults) {
+                placesNew.push(places[i]);
+                i++;
             }
-            placesNew.push(places[rand]);
-            i++;
+            return placesNew;
         }
-        return placesNew;
     }
 
     useEffect(() => {
@@ -90,15 +72,14 @@ function MainPage() {
     async function handleSearch() {
         setLoading(true);
         setError(null);
+
+        clearMarkers();
     
         try {
             const { AdvancedMarkerElement } = await window.google.maps.importLibrary("marker");
             const { LatLngBounds } = await window.google.maps.importLibrary("core");
 
-            const types = generateTypes();
             const bounds = new LatLngBounds();
-            
-            clearMarkers();
 
             const request = {
                 locationRestriction: {
@@ -106,7 +87,7 @@ function MainPage() {
                     lng: lng,
                     radius: radius * 1000, // Convert km to meters
                 },
-                types: types,
+                types: [selectedValue],
                 maxResultCount: numResults > 20 ? 20 : numResults,
             };
     
@@ -116,11 +97,12 @@ function MainPage() {
             const response = await axios.get(url);
             console.log('API Response:', response);
     
-            const fetchedPlaces = response.data;
+            var fetchedPlaces = response.data;
             console.log('Fetched Places:', fetchedPlaces);
     
             if (Array.isArray(fetchedPlaces) && fetchedPlaces.length > 0) {
-                setPlaces(getRandomPlaces(fetchedPlaces));
+                fetchedPlaces = cutPlacesDown(fetchedPlaces);
+                setPlaces(fetchedPlaces);
     
 
                 const newMarkers = fetchedPlaces.map(place => {
@@ -140,7 +122,7 @@ function MainPage() {
                 setMarkers(newMarkers);
                 map.fitBounds(bounds);
             } else {
-                setError('No restaurants found in this area.');
+                setError('No points of interest found in this area.');
             }
         } catch (err) {
             console.error('Error details:', err);
@@ -228,7 +210,7 @@ function MainPage() {
                         title="Number of results"
                         placeholder="Enter number of results"
                         value={numResults}
-                        onChange={(ev) => setNumResults(ev.target.value)}
+                        onChange={(ev) => setNumResults(ev.target.value > 20 ? 20 : ev.target.value)}
                     />
                 </div>
                 <div className="input-group">
@@ -244,36 +226,12 @@ function MainPage() {
                     />
                 </div>
                 <div className="input-group">
-                    <label style={{textAlign: 'center'}}>Include within search:</label>
-                    <div style={{ textAlign: 'center', display: 'flex', gap: '20px' }}>
-                        <label>
-                            Restaurants
-                            <input
-                            type="checkbox"
-                            name="restaurants"
-                            checked={checkedItems.restaurants}
-                            onChange={handleCheckboxChange}
-                            />
-                        </label>
-                        <label>
-                            Museums
-                            <input
-                            type="checkbox"
-                            name="museums"
-                            checked={checkedItems.museums}
-                            onChange={handleCheckboxChange}
-                            />
-                        </label>
-                        <label>
-                            Parks
-                            <input
-                            type="checkbox"
-                            name="parks"
-                            checked={checkedItems.parks}
-                            onChange={handleCheckboxChange}
-                            />
-                        </label>
-                    </div>
+                    <label htmlFor="input5">Select what to search for</label>
+                    <select id="input5" value={selectedValue} onChange={handleChange}>
+                        <option value="restaurant">Restaurants</option>
+                        <option value="museum">Museums</option>
+                        <option value="park">Parks</option>
+                    </select>
                 </div>
             </div>
             <div className='App'>
