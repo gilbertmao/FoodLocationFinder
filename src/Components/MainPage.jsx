@@ -1,6 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 
+/**
+ * MainPage component allows users to search for nearby points of interest based on latitude, longitude, radius, and type (e.g., restaurants).
+ * It integrates with the Google Maps API to display a map and markers for the places found. It also allows sorting of results by rating or price.
+ *
+ * @returns {JSX.Element} The rendered main page with a map and input fields for user search.
+ */
+
 function MainPage() {
     const [places, setPlaces] = useState([]);
     const [loading, setLoading] = useState(false);
