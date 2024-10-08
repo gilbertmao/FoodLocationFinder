@@ -2,10 +2,17 @@ package com.springboot.foodlocationfinder;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * The {@code LoginLogic} class handles user login and account creation for the
+ * Food Location Finder application. It stores user login data and provides methods
+ * for account creation and login attempts.
+ */
 public class LoginLogic {
 
+    // A Map that stores usernames and passwords.
     private Map<String, String> LoginData;
-    
+
+
     public LoginLogic() {
         LoginData = new HashMap<>();
     }
