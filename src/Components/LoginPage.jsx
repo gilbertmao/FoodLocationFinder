@@ -16,6 +16,12 @@ function LoginPage({ loginHandle, users }) {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
+
+  /**
+     * Handles the login process. Checks if the entered username exists in the users map,
+     * and if so, validates the password. Sets appropriate error messages or calls the loginHandle
+     * function upon successful login.
+     */
   const handleLogin = () => {
     // Check if the username exists in the map
     if (users.has(username)) {
