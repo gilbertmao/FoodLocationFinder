@@ -10,6 +10,7 @@
     "axios": "^1.7.7",
     "foodlocationfinder": "file:",
     "http-proxy-middleware": "^3.0.2",
+    "mysql": "^2.18.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-scripts": "5.0.1",
@@ -41,7 +42,6 @@
   },
   "description": "**A Spring Boot web application for finding food locations based on a given location, built by Team ChefsHouse.**",
   "main": "index.js",
-  "devDependencies": {},
   "author": "",
   "license": "ISC"
 }
