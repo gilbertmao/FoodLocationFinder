@@ -1,5 +1,16 @@
 import React, { useState } from 'react';
 
+
+/**
+ * The `LoginPage` component handles user login functionality for the Food Location Finder application.
+ * It allows users to enter their username and password and attempts to authenticate them.
+ *
+ * @param {Function} loginHandle - A function passed as a prop to handle the outcome of login or account creation.
+ * @param {Map} users - A map containing usernames and passwords, used to validate login credentials.
+ *
+ * @returns {JSX.Element} The rendered login page component.
+ */
+
 function LoginPage({ loginHandle, users }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
