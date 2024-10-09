@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 
 function CreateAccountPage({ loginHandle, users, setUsers }) {
+
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
     //handle account creation
+
+   //handle account creation
   const handleCreateAccount = () => {
     // Basic validation
     if (!username || !password) {
