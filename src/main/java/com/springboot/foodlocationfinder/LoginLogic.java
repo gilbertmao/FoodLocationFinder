@@ -28,7 +28,7 @@ public class LoginLogic {
      * The username must be unique (i.e., not already in use). The password must be
      * at least 8 characters long.
      * </p>
-     *
+     * ...
      * @param username The desired username for the new user.
      * @param password The desired password for the new user.
      * @return {@code true} if the account is successfully created,
@@ -53,7 +53,7 @@ public class LoginLogic {
     }
 
     /**
-     * Attempts to log in a user with the given username and password.
+     * Proceeds to log in a user with the given username and password.
      *
      * <p>
      * The username must exist in the system, and the password must match the
