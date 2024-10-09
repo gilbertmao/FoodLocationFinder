@@ -32,9 +32,15 @@ The **Food Location Finder** is a web application designed to help users discove
 
 ---
 
-## 📚 How to Run the Project
+## 📚 Install Guide
 
-**INSTALL GUIDE**
+**Pre-Requisites**
+
+**Requirements**
+The following dependent libraries must be installed
+- Node.js
+
+**How to Run the Project**
 
 1. **Clone the repository**:
    ```bash
@@ -42,3 +48,6 @@ The **Food Location Finder** is a web application designed to help users discove
    cd food-location-finder
 2. **Run npm install**
 3. **Run npm start**
+
+**Trouble Shooting**
+
