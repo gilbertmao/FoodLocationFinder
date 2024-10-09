@@ -34,7 +34,23 @@ The **Food Location Finder** is a web application designed to help users discove
 
 ## 📋 Release Notes
 
----
+Initial Software Release:
+
+* Create account or login to search
+* Enter latitude, longitude (in place of the default location of Atlanta), radius, and select number of results to return locations.
+* Search results are supported for restaurants, museums, and parks.
+* Results are returned in the form of a table and pins are placed on the corressponding map.
+
+Bug Fixes:
+
+* Changed query parameters from location to (lat, lng) to satisfy API call requirements
+* Fixed representation of dollar signs.
+* Redesigned UI of Login and Create Account pages to be more neat.
+
+Known Bugs / Missing Features:
+
+* Individual search history and loading upon login is a future feature.
+* Inconsistent results return times from the API call.
 
 ## 📚 Install Guide
 
