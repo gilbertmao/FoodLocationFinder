@@ -76,9 +76,11 @@ The following dependent libraries must be installed and added t
    ```bash
    git clone https://github.com/your-username/food-location-finder.git
    cd food-location-finder
-2. Run npm install
-3. Run npm start
-4. To checkout the deployed app with Google Cloud, visit https://frontend-dot-cs-3300-location-finder.uk.r.appspot.com/
+2. Run
+   ```bash
+   npm install
+   npm start
+3. To checkout the deployed app with Google Cloud, visit https://frontend-dot-cs-3300-location-finder.uk.r.appspot.com/
 
 **Trouble Shooting**
 
