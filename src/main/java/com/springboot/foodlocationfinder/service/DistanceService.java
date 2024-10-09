@@ -32,7 +32,9 @@ public class DistanceService {
         double lng1Rad = Math.toRadians(lng1);
         double lat2Rad = Math.toRadians(lat2);
         double lng2Rad = Math.toRadians(lng2);
+        //Difference in distance between latitudes for calculation
         double latDiff = lat2Rad - lat1Rad;
+        //Difference in distance between longitudes for calculation
         double lngDiff = lng2Rad - lng1Rad;
         // Apply the Haversine formula to calculate the great-circle distance
         double a = Math.sin(latDiff / 2) * Math.sin(latDiff / 2) + Math.cos(lat1Rad) * Math.cos(lat2Rad) * Math.sin(lngDiff / 2) * Math.sin(lngDiff / 2);
