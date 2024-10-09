@@ -39,4 +39,11 @@ public class DistanceService {
         // Return the distance rounded to the nearest meter
         return Math.round(EARTH_RAD * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)));        
     }
+
+
+    
+    public double convertKmToMiles(double meters) {
+        final double milesPerMeter = 0.000621371;
+        return meters * milesPerMeter;
+    }
 }
