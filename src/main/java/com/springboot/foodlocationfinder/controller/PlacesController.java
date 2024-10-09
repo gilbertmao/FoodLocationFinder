@@ -27,7 +27,9 @@ public class PlacesController {
     @Autowired
     private PlacesService placesService;
     @Autowired
-    
+    /**
+     * Returns the API key of the placesService
+     */
     @GetMapping("/apikey")
     public String getAPIKey() {
         return placesService.getApiKey();
@@ -37,7 +39,7 @@ public class PlacesController {
     /**
      * Endpoint to search for places around a specified location within a given radius and types.
      *
-     * @param location The location (latitude and longitude) around which to search, in a format like "lat,lng".
+     * @param lat/long - the lattitude and longitude of the location
      * @param radius   The radius (in meters) within which to search for places.
      * @param types    An array of place types (e.g., "restaurant", "cafe") to filter the results.
      * @return A JSON string with search results from the Google Places API.
