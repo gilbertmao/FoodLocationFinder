@@ -13,15 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
  * This controller handles API requests related to fetching location-based data using Google Places API.
  * It provides endpoints for retrieving the API key and searching for places based on a given location.
  */
-
-import java.util.List;
-import java.util.ArrayList;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
-import java.util.HashMap;
-import java.util.Map;
-
 @RestController
 public class PlacesController {
     @Autowired
