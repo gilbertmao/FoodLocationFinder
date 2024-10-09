@@ -2,23 +2,37 @@ package com.springboot.foodlocationfinder;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.springboot.foodlocationfinder.database.dbConnector;
-
+/**
+ * The {@code LoginLogic} class handles user login and account creation for the
+ * Food Location Finder application. It stores user login data and provides methods
+ * for account creation and login attempts.
+ */
 public class LoginLogic {
 
+    // A Map that stores usernames and passwords.
     private Map<String, String> LoginData;
-    
+
+
+    /**
+     * Initializes the {@code LoginLogic} class by creating an empty
+     * {@code LoginData} map to store usernames and passwords.
+     */
     public LoginLogic() {
         LoginData = new HashMap<>();
     }
 
-    /*
-     * Creates user login. Returns true if account is properly created, returns false if there 
-     * is any issue creating the user. 
-     * 
-     * Usernames Must be unique.
-     * Passwords must be at least 8 characters. 
-     * 
+    /**
+     * Creates a new user account with the given username and password.
+     *
+     * <p>
+     * The username must be unique (i.e., not already in use). The password must be
+     * at least 8 characters long.
+     * </p>
+     *
+     * @param username The desired username for the new user.
+     * @param password The desired password for the new user.
+     * @return {@code true} if the account is successfully created,
+     *         {@code false} if the username is already taken or the password is too short.
      */
     public boolean createUser(String username, String password) {
         // duplicate username
@@ -40,11 +54,19 @@ public class LoginLogic {
 
     }
 
-    /*
-     * Attempts to login given username and password. Returns true if login is successful, false otherwise.
-     * 
+    /**
+     * Attempts to log in a user with the given username and password.
+     *
+     * <p>
+     * The username must exist in the system, and the password must match the
+     * stored password for the login to be successful.
+     * </p>
+     *
+     * @param username The username of the user attempting to log in.
+     * @param password The password provided for login.
+     * @return {@code true} if the login is successful,
+     *         {@code false} if the username does not exist or the password is incorrect.
      */
-
     public boolean login(String username, String password) {
         // username does not exist
         if (!LoginData.containsKey(username)) {
