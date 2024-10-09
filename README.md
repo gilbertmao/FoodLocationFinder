@@ -40,6 +40,16 @@ The **Food Location Finder** is a web application designed to help users discove
 
 **Pre-Requisites**
 
+*SOFTWARE*
+
+In order to run this software the following must me installed
+-  npm command line
+
+*HARDWARE*
+Any modern hardware should be sufficient to run the application provided it has the following
+- 4 GB RAM
+
+
 **Requirements**
 The following dependent libraries must be installed.
 - Node.js
