@@ -41,9 +41,8 @@ The **Food Location Finder** is a web application designed to help users discove
 **Pre-Requisites**
 
 *SOFTWARE*
-
-In order to run this software the following must me installed
--  npm command line
+In order to run this software the following must be installed
+-  npm command line (v7 or later)
 
 *HARDWARE*
 Any modern hardware should be sufficient to run the application provided it has the following
@@ -51,10 +50,11 @@ Any modern hardware should be sufficient to run the application provided it has 
 
 
 **Requirements**
-The following dependent libraries must be installed.
+The following dependent libraries must be installed and added t
 - Node.js
+- Maven
 
-**How to Run the Project**
+**How to Run the Project - Download, Build and Run**
 
 1. Clone the repository:
    ```bash
@@ -65,5 +65,7 @@ The following dependent libraries must be installed.
 
 **Trouble Shooting**
 
-1. Check that all required libraries are installed
+1. The most common problem is due to a lack of proper dependencies. Review the Software Requirements earlier in the guide and ensure that all dependencies are present.
+   - npm can be checked simply by running npm --v in command line. The command should return a version number.
+2. If the dependencies are installed but errors are still occuring, check that all dependencies have been properly added to the system path and are visable to the code base.
 
