@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 
 function CreateAccountPage({ loginHandle, users, setUsers }) {
+
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+
+    //handle account creation
 
    //handle account creation
   const handleCreateAccount = () => {
@@ -39,6 +42,7 @@ function CreateAccountPage({ loginHandle, users, setUsers }) {
     loginHandle('login');
   };
 
+    //various details
   return (
     <div style={{
       display: 'flex',

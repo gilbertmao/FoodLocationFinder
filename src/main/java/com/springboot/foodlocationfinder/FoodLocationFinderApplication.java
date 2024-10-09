@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 
 /**
- * The main class for the Food Location Finder application.
+ * The main class for the Food Location Finder Application.
  *
  * This class serves as the entry point for the Spring Boot application. It
  * contains the main method which starts the Spring Boot framework.
