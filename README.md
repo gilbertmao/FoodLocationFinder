@@ -51,6 +51,9 @@ Known Bugs / Missing Features:
 
 * Individual search history and loading upon login is a future feature.
 * Inconsistent results return times from the API call.
+* Searching for museums with an exact radius of 1 causes an application crash
+* Users are sometimes not properly added to the user system and the account will have to be recreated
+* The original documentation included sorting my monuments, this was later replaces with museums and parks for this version of the app, as they saw higher demand.
 
 ## 📚 Install Guide
 
@@ -60,9 +63,11 @@ Known Bugs / Missing Features:
 In order to run this software the following must be installed
 -  npm command line (v7 or later)
 
+
 *HARDWARE*
 Any modern hardware should be sufficient to run the application provided it has the following
 - 4 GB RAM
+- Internet Connection
 
 
 **Requirements**
@@ -89,7 +94,15 @@ The following dependent libraries must be installed and added t
 
 **Trouble Shooting**
 
+
+*Why is the code not compiling when I run npm init?*
+
 1. The most common problem is due to a lack of proper dependencies. Review the Software Requirements earlier in the guide and ensure that all dependencies are present.
    - npm can be checked simply by running npm --v in command line. The command should return a version number.
 2. If the dependencies are installed but errors are still occuring, check that all dependencies have been properly added to the system path and are visable to the code base.
+
+*I have sucessfully loaded the application but the location search is returning "No Reponse Recieved". Why is this occuring?*
+
+   The SpringBoot application was incorectly launched. Please ensure that step of the build guide was performed.
+
 
