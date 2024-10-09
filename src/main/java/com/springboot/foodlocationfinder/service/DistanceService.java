@@ -33,7 +33,9 @@ public class DistanceService {
         double lat2Rad = Math.toRadians(lat2);
         double lng2Rad = Math.toRadians(lng2);
 
+        //Difference in distance between latitudes for calculation
         double latDiff = lat2Rad - lat1Rad;
+        //Difference in distance between longitudes for calculation
         double lngDiff = lng2Rad - lng1Rad;
 
         // Apply the Haversine formula to calculate the great-circle distance
@@ -41,5 +43,12 @@ public class DistanceService {
         double dist = EARTH_RAD * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
         // Return the distance rounded to the nearest meter
         return Math.round(dist);        
+    }
+
+
+    
+    public double convertKmToMiles(double meters) {
+        final double milesPerMeter = 0.000621371;
+        return meters * milesPerMeter;
     }
 }
