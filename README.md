@@ -79,12 +79,13 @@ The following dependent libraries must be installed and added t
 2. Start the backend first by running the following
    ```bash
    ./mvnw spring-boot:run
-4. Start the frontend next by running
+4. Alternatively, you can press the play button next the the application in VSCode or IntelliJ
+5. Start the frontend next by running
    ```bash
    npm install
    npm start
-5. You can then go to the localhost link that shows up in the frontend terminal and enjoy!
-6. To checkout the deployed app with Google Cloud, visit https://frontend-dot-cs-3300-location-finder.uk.r.appspot.com/
+6. You can then go to the localhost link that shows up in the frontend terminal and enjoy!
+7. To checkout the deployed app with Google Cloud, visit https://frontend-dot-cs-3300-location-finder.uk.r.appspot.com/
 
 **Trouble Shooting**
 
