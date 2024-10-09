@@ -6,6 +6,7 @@ function CreateAccountPage({ loginHandle, users, setUsers }) {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
+    //handle account creation
 
    //handle account creation
   const handleCreateAccount = () => {
@@ -41,6 +42,7 @@ function CreateAccountPage({ loginHandle, users, setUsers }) {
     loginHandle('login');
   };
 
+    //various details
   return (
     <div style={{
       display: 'flex',

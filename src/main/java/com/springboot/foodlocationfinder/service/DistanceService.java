@@ -4,7 +4,8 @@ import org.springframework.stereotype.Service;
 
 /**
  * The {@code DistanceService} class provides a service to calculate the distance
- * between two geographical coordinates using the Haversine formula.
+ * between two geographical coordinates using the Haversine formula. It also provides
+ * a function to convert distance to miles if needed.
  *
  * <p>This service calculates the distance between two points on the Earth's surface
  * given their latitude and longitude in degrees. The result is the shortest distance

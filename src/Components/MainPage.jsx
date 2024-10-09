@@ -194,6 +194,7 @@ function MainPage() {
                 <td>{place.displayName || 'N/A'}</td>
                 <td>{place.rating || 'N/A'}</td>
                 <td>{place.price || 'N/A'}</td>
+                
                 <td>{place.address || 'N/A'}</td>
             </tr>
         ));
@@ -202,56 +203,72 @@ function MainPage() {
     return (
         <div>
             <h1 className='App'>Search for nearby points of interest</h1>
-            <div className="container">
-                <div className="input-group">
-                    <label htmlFor="input1">Latitude</label>
-                    <input
-                        id="input1"
-                        title="Latitude"
-                        placeholder="Enter a Latitude"
-                        value={lat}
-                        onChange={(ev) => setLat(ev.target.value)}
-                    />
-                </div>
-                <div className="input-group">
-                    <label htmlFor="input2">Longitude</label>
-                    <input
-                        id="input2"
-                        title="Longitude"
-                        placeholder="Enter a Longitude"
-                        value={lng}
-                        onChange={(ev) => setLng(ev.target.value)}
-                    />
-                </div>
-                <div className="input-group">
-                    <label htmlFor="input3">Number of results (Max: 20)</label>
-                    <input
-                        id="input3"
-                        title="Number of results"
-                        placeholder="Enter number of results"
-                        value={numResults}
-                        onChange={(ev) => setNumResults(ev.target.value > 20 ? 20 : ev.target.value)}
-                    />
-                </div>
-                <div className="input-group">
-                    <label htmlFor="input4">Radius: {radius} km</label>
-                    <input
-                        type="range"
-                        id="input4"
-                        min="0"
-                        max="100"
-                        value={radius}
-                        onChange={(ev) => setRadius(Number(ev.target.value))}
-                        style={{ width: '100%' }}
-                    />
-                </div>
-                <div className="input-group">
-                    <label htmlFor="input5">Select what to search for</label>
-                    <select id="input5" value={selectedValue} onChange={handleChange}>
-                        <option value="restaurant">Restaurants</option>
-                        <option value="museum">Museums</option>
-                        <option value="park">Parks</option>
-                    </select>
+            <div style={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+            }}>
+                <div style={{
+                    border: '1px solid #ccc',
+                    borderRadius: '5px',
+                    padding: '16px',
+                    margin: '16px',
+                    boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
+                    maxWidth: '100%',
+                    alignItems: 'center'
+                }}>
+                    <div className="container">
+                        <div className="input-group">
+                            <label htmlFor="input1">Latitude</label>
+                            <input
+                                id="input1"
+                                title="Latitude"
+                                placeholder="Enter a Latitude"
+                                value={lat}
+                                onChange={(ev) => setLat(ev.target.value)}
+                            />
+                        </div>
+                        <div className="input-group">
+                            <label htmlFor="input2">Longitude</label>
+                            <input
+                                id="input2"
+                                title="Longitude"
+                                placeholder="Enter a Longitude"
+                                value={lng}
+                                onChange={(ev) => setLng(ev.target.value)}
+                            />
+                        </div>
+                        <div className="input-group">
+                            <label htmlFor="input3">Number of results</label>
+                            <input
+                                id="input3"
+                                title="Number of results"
+                                placeholder="Enter number of results"
+                                value={numResults}
+                                onChange={(ev) => setNumResults(ev.target.value > 20 ? 20 : ev.target.value)}
+                            />
+                        </div>
+                        <div className="input-group">
+                            <label htmlFor="input4">Radius: {radius} km</label>
+                            <input
+                                type="range"
+                                id="input4"
+                                min="0"
+                                max="100"
+                                value={radius}
+                                onChange={(ev) => setRadius(Number(ev.target.value))}
+                                style={{ width: '100%' }}
+                            />
+                        </div>
+                        <div className="input-group">
+                            <label htmlFor="input5">Select what to search for</label>
+                            <select id="input5" value={selectedValue} onChange={handleChange}>
+                                <option value="restaurant">Restaurants</option>
+                                <option value="museum">Museums</option>
+                                <option value="park">Parks</option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div className='App'>
