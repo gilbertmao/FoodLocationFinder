@@ -34,7 +34,11 @@ The **Food Location Finder** is a web application designed to help users discove
 
 ## 📚 How to Run the Project
 
+**INSTALL GUIDE**
+
 1. **Clone the repository**:
    ```bash
    git clone https://github.com/your-username/food-location-finder.git
    cd food-location-finder
+2. **Run npm install**
+3. **Run npm start**
