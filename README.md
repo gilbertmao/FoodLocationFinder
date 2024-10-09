@@ -78,6 +78,7 @@ The following dependent libraries must be installed and added t
    cd food-location-finder
 2. Run npm install
 3. Run npm start
+4. To checkout the deployed app with Google Cloud, visit https://frontend-dot-cs-3300-location-finder.uk.r.appspot.com/
 
 **Trouble Shooting**
 
