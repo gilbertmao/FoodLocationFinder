@@ -28,7 +28,7 @@ public class PlacesService {
         return apiKey;
     }
     /**
-     * Searches for places near the specified location.
+     * Searches for places near the specified location. Main function of application.
      *
      * @param lat the latitude of the location
      * @param lng the longitude of the location

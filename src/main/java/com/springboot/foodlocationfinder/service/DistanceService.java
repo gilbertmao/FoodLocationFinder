@@ -18,7 +18,7 @@ public class DistanceService {
 
     /**
      * Calculates the distance between two geographical coordinates (latitude and longitude)
-     * using the Haversine formula. The result is rounded to the nearest meter.
+     * using the Haversine formula. The result is rounded to the nearest meter..
      *
      * @param lat1 Latitude of the first location in degrees.
      * @param lng1 Longitude of the first location in degrees.
