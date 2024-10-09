@@ -18,9 +18,13 @@ public class PlacesController {
     @Autowired
     private PlacesService placesService;
     @Autowired
-    
+    /**
+     * Gets the api key from the user so that their request is valid
+     * @return user's api key
+     */
     @GetMapping("/apikey")
     public String getAPIKey() {
+        //requests the API Key from PlaceService
         return placesService.getApiKey();
     }
 
